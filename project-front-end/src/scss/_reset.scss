@@ -1,0 +1,44 @@
+
+@use "./abstracts" as *;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  
+}
+
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+section, .header_div , .div_footer{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+
+  @media (min-width: 1400px) {
+    max-width: 1300px;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.buttonTeste{
+  background-color: aqua;
+}
