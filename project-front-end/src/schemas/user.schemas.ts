@@ -12,4 +12,7 @@ export const UserSchema = z.object({
   //ficou faltando img
 })
 
+//export const ReadUserSchema = UserSchema.omit({user: true, userId: true, createAt: true, id: true, anouncementId: true})
+
 export type UserSchemaData = z.infer<typeof UserSchema>
+//export type ReadUserSchemaData = z.infer<typeof UserSchema>

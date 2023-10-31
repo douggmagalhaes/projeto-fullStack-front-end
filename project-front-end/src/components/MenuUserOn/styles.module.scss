@@ -1,6 +1,6 @@
 .nav_header{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border-left: 1.5px solid var(--grey-500);
   width: 220px;
@@ -8,14 +8,40 @@
   padding-left: 30px;
   position: relative;
 
+  .button{
+    background-color: transparent;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    color: var(--grey-700);
+  }
 
-  .div_user_avatar{
+
+  @media (max-width: 575px){
+    border-left: none;
+    justify-content: flex-end;
+
+  }
+
+  @media (max-width: 575px){
+   width: 80px;
+
+  }
+
+  .div_user_menu{
+
+    @media (max-width: 575px){
+      display: none;
+  
+    }
+
+    .div_user_avatar{
     display: flex;
     gap: 15px;
     cursor: pointer;
     align-items: center;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
+
 
     .avatar{
       width: 36px;
@@ -62,6 +88,20 @@
 
 
   }
+  }
+
+  .div_user_menu_mobile{
+    cursor: pointer;
+    display: none;
+
+    @media (max-width: 575px){
+      display: block;
+  
+    }
+  }
+
+
+  
   
 
 

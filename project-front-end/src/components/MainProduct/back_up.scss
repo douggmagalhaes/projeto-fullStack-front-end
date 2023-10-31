@@ -1,0 +1,26 @@
+.div_items{
+  //position: relative;
+  background-color: var(--blue-800);
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+
+
+  .div_sections{
+    border: 1px solid red;
+    display: flex;
+    //position: relative;
+    //top: 550px;
+    width: 100%;
+
+  }
+
+  .div_sections_comments{
+    border: 1px solid green;
+    //position: relative;
+    //top: 900px;
+  }
+}

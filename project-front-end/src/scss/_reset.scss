@@ -20,6 +20,20 @@ html {
   overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--grey-400);        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--grey-800) ;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+  //border: 3px solid orange;  /* creates padding around scroll thumb */
+}
+
 section, .header_div , .div_footer{
   width: 100%;
   max-width: 1200px;

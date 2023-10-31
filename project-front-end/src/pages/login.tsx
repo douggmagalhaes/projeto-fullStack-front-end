@@ -1,28 +1,17 @@
 //import { NextPage } from "next";
+import Header from "@/components/Header";
+import LoginForm from "@/components/LoginForm";
+import MainLogin from "@/components/MainLogin";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
-/*
-const Home: NextPage = () => {
-  const router = useRouter
+
+const Login:NextPage = () => {
   return (
     <>
-    <div>
-      <h1>Car name</h1>
-    </div>
+    <Header />
+    <MainLogin/>
     </>
-  )
-}
-
-export default Home
-
-*/
-
-const Login = () => {
-  return (
-    <div>
-      <h1> login page</h1>
-    </div>
   )
 }
 

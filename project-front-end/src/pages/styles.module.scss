@@ -1,0 +1,26 @@
+.div_central{
+  position: absolute;
+  height: 100vh;
+
+  .div_main{
+    //position: absolute;
+  }
+
+  .div_footer{
+    position: relative;
+    top: 1600px;
+    width: 100vw;
+  }
+}
+
+.div_container{
+  //position: absolute;
+  //margin-left: 10px;
+  //display: flex;
+  //width: 100vw;
+  //height: 100vh;
+  //justify-content: space-between;
+  //flex-direction: column;
+  //background-color: var(--grey-200);
+
+}

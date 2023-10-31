@@ -1,8 +1,13 @@
-const Register = () => {
+import Header from "@/components/Header"
+import MainRegister from "@/components/MainRegister"
+import { NextPage } from "next"
+
+const Register:NextPage = () => {
   return (
-    <div>
-      <h1>register page</h1>
-    </div>
+    <>
+    <Header/>
+    <MainRegister/>
+    </>
   )
 }
 

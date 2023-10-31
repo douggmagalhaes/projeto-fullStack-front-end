@@ -1,0 +1,82 @@
+.li_comments{
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .comment_user_detail{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .user_avatar{
+      width: 35px;
+      height: 35px;
+      background-color: rgb(60, 255, 0);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--white-500);
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.5rem;
+    }
+
+    .user_name{
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.5rem;
+      color: var(--grey-800);
+    }
+
+    .date_comment{
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.5rem;
+      color: var(--grey-600);
+    }
+
+
+  }
+
+  .div_comments{
+
+    .p_comments{
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      color: var(--grey-700);
+    }
+
+
+  }
+
+  .div_edite_comments{
+    display: flex;
+    gap: 10px;
+
+    .edite{
+      font-size: 0.8rem;
+      cursor: pointer;
+
+    }
+
+    .edite:hover{
+      color: var(--blue-800);
+
+    }
+
+    .remove{
+      font-size: 0.8rem;
+      cursor: pointer;
+
+    }
+
+    .remove:hover{
+      color: red;
+
+    }
+    
+  }
+}

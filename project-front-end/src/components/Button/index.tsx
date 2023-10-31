@@ -23,6 +23,10 @@ const Button = ({ children, stylesType, icon}: ButtonProps) => {
      case "button_register":
       
      return (<button className={styles.button_register}>{children}</button>)
+
+     case "button_register_mobile":
+      
+     return (<button className={styles.button_register_mobile}>{children}</button>)
    
      case "button_navgate_footer":
       

@@ -1,19 +1,26 @@
 .footer{
   background-color: var(--grey-900);
-  height: 140px;
-
+  height: 160px;
+  
   .div_footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 140px;
+    height: 160px;
     max-width: 1300px;
     margin: 0 auto;
     padding: 10px;
     overflow-y: hidden;
-
   @media (min-width: 1400px) {
     max-width: 1300px;
+  }
+
+  @media (max-width: 575px){
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0px 20px 0px;
+    
+
   }
 
     .div_footer_logo{

@@ -1,0 +1,30 @@
+.ul_controller{
+  display: flex;
+  gap: 20px;
+
+  @media (max-width: 350px) {
+   flex-direction: column;
+  }
+  
+  .page{
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    color: var(--grey-600);
+  
+  }
+  .total_page{
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    color: var(--grey-500);
+  }
+  
+  .button{
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    color: var(--blue-700);
+  }
+  }
