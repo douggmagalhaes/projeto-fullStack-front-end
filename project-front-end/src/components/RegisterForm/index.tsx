@@ -5,13 +5,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 //import { useAuth } from "@/contexts/authContext";
 import { RegisterSchema, RegisterSchemaData } from "@/schemas/register.Schema";
 import { useAuth } from "@/contexts/authContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import styles from "./styles.module.scss"
 
-//RegisterSchema
-//RegisterSchemaData
+
 const RegisterForm = () => {
 
   const [userRegister, setUserRegister] = useState({})
+
+  const [isCheck, setIsCheck] = useState(true)
+  const [isCheckFalse, setIsCheckFalse] = useState(false)
+  const [isCheckTrue, setIsCheckTrue] = useState(true)
 
   const {register, handleSubmit, formState: { errors }} = useForm<RegisterSchemaData>({
     resolver: zodResolver(RegisterSchema)
@@ -55,12 +59,27 @@ const RegisterForm = () => {
   };
 
   
+  function toggleCheck(value: boolean) {
+
+    setIsCheck(value)
+
+    if(value == true){
+      setIsCheckTrue(true)
+      setIsCheckFalse(false)
+    }
+
+    if(value == false){
+      setIsCheckTrue(false)
+      setIsCheckFalse(true)
+
+    }
+  }
+
+  
   return (
-  <div>
-    <h2>login</h2>
-    <form onSubmit={handleSubmit(onFormSubmit)}>
+    <form onSubmit={handleSubmit(onFormSubmit)} className={styles.form}>
       
-      <div>
+      <div className={styles.inputs_container}>
         <label htmlFor="name">
           Nome
         </label>
@@ -71,7 +90,8 @@ const RegisterForm = () => {
         />
         {errors.name && <span>{errors.name.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="email">
           E-mail
         </label>
@@ -82,7 +102,8 @@ const RegisterForm = () => {
         />
         {errors.email && <span>{errors.email.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="cpf">
           Cpf
         </label>
@@ -93,7 +114,8 @@ const RegisterForm = () => {
         />
         {errors.cpf && <span>{errors.cpf.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="phone">
           Phone
         </label>
@@ -104,7 +126,8 @@ const RegisterForm = () => {
         />
         {errors.phone && <span>{errors.phone.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="date">
           Data de nascimento
         </label>
@@ -114,7 +137,8 @@ const RegisterForm = () => {
        />
         {errors.dateOfBirth && <span>{errors.dateOfBirth.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="description">
           Descrição
         </label>
@@ -125,7 +149,8 @@ const RegisterForm = () => {
 
       
       <h2>informações de endereço</h2>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="zipCode">
           Cep
         </label>
@@ -136,29 +161,37 @@ const RegisterForm = () => {
         />
         {errors.address?.zipCode && <span>{errors.address?.zipCode.message}</span>}
       </div>
-      <div>
-        <label htmlFor="state">
-          Estado
-        </label>
-        <input 
-        type="text" 
-        placeholder="Digite a sigla do estado"
-        {...register("address.state")}
-        />
-        {errors.address?.state && <span>{errors.address?.state.message}</span>}
+
+      <div className={styles.div_inputs_container}>
+
+        <div className={styles.inputs_container}>
+          <label htmlFor="state">
+            Estado
+          </label>
+          <input 
+          type="text" 
+          placeholder="Digite o estado"
+          {...register("address.state")}
+          />
+          {errors.address?.state && <span>{errors.address?.state.message}</span>}
+        </div>
+
+        <div className={styles.inputs_container}>
+          <label htmlFor="city">
+            Cidade
+          </label>
+          <input 
+          type="text" 
+          placeholder="Digite a cidade"
+          {...register("address.city")}
+          />
+          {errors.address?.city && <span>{errors.address?.city.message}</span>}
+        </div> 
+
       </div>
-      <div>
-        <label htmlFor="city">
-          Cidade
-        </label>
-        <input 
-        type="text" 
-        placeholder="Digite a cidade"
-        {...register("address.city")}
-        />
-        {errors.address?.city && <span>{errors.address?.city.message}</span>}
-      </div>
-      <div>
+
+
+      <div className={styles.inputs_container}>
         <label htmlFor="street">
           Rua
         </label>
@@ -169,39 +202,48 @@ const RegisterForm = () => {
         />
          {errors.address?.state && <span>{errors.address?.state.message}</span>}
       </div>
-      <div>
-        <label htmlFor="number">
-          numero
-        </label>
-        <input 
-        type="number" 
-        placeholder="Digite o número da rua"
-        {...register("address.number")}
-        />
-         {errors.address?.number && <span>{errors.address?.number.message}</span>}
+
+      <div className={styles.div_inputs_container}>
+
+        <div className={styles.inputs_container}>
+          <label htmlFor="number">
+            numero
+          </label>
+          <input 
+          type="number" 
+          placeholder="Digite o número da rua"
+          {...register("address.number")}
+          />
+          {errors.address?.number && <span>{errors.address?.number.message}</span>}
+        </div>
+
+        <div className={styles.inputs_container}>
+          <label htmlFor="complement">
+            complemento
+          </label>
+          <input 
+          type="text" 
+          placeholder="Ex: apt 12"
+          {...register("address.complement")}
+          />
+          {errors.address?.complement && <span>{errors.address?.complement.message}</span>}
+        </div>
+
+
       </div>
-      <div>
-        <label htmlFor="complement">
-          complemento
-        </label>
-        <input 
-        type="text" 
-        placeholder="Ex: apt 12"
-        {...register("address.complement")}
-        />
-         {errors.address?.complement && <span>{errors.address?.complement.message}</span>}
-      </div>
+
       
-      <div>
-        <h2>tipo de conta</h2>
-        <label htmlFor="seller">vendedor</label>
-        <input type="radio" id="seller"  value="true" {...register("is_seller")} />
-        <label htmlFor="buyer">comprador</label>
-        <input type="radio" id="buyer"  value="false" {...register("is_seller")} checked/>
+      <h2>tipo de conta</h2>
+
+      <div className={styles.inputs_container_type}>
+        <label onClick={() => toggleCheck(true)} className={isCheckTrue == true ? styles.input_type_true : styles.input_type_false} htmlFor="seller">Vendedor</label>
+        <input type="radio" id="seller"  value="true" {...register("is_seller")} checked />
+        <label onClick={() => toggleCheck(false)} className={isCheckFalse == true ? styles.input_type_true : styles.input_type_false} htmlFor="buyer">Comprador</label>
+        <input type="radio" id="buyer"  value="false" {...register("is_seller")}/>
       </div>
 
     
-      <div>
+      <div className={styles.inputs_container}>
         <label htmlFor="password">
           senha
         </label>
@@ -212,20 +254,14 @@ const RegisterForm = () => {
         />
         {errors.password && <span>{errors.password.message}</span>}
       </div>
-      <Link href={"/"}>
-      esqueceu sua senha?
-      </Link>
-      <div>
-        <button>
-          entrar
+      
+      <div className={styles.button_container}>
+        <button className={styles.button_register}>
+          Finalizar cadastro
         </button>
       </div>
-
-      <Link href={"/register"}>
-      Não é cadastrado ainda? Clique aqui
-      </Link>
+      
     </form>
-  </div>
   )
 }
 

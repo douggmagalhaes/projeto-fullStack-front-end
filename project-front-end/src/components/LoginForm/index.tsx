@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "@/contexts/authContext";
 import { useRouter } from "next/navigation";
-//import { FormEventHandler, SyntheticEvent, useState } from "react";
 import { getSession, signIn } from "next-auth/react";
 import { GetServerSideProps } from "next";
 import styles from "./styles.module.scss"
@@ -12,7 +11,6 @@ import styles from "./styles.module.scss"
 
 const LoginForm = () => {
 
-  //const { push } = useRouter();
   const router = useRouter();
 
   const { authUserOn, setAuthUserOn } = useAuth();
@@ -24,39 +22,9 @@ const LoginForm = () => {
   const { login } = useAuth();
 
   const onFormSubmit = async (formData: LoginSchemaData) => {
+
     login(formData);
-    //login(formData);
-    //console.log(formData)
-    /*
-    formData.email
-
-    let email = formData.email
-    let password = formData.password
-
-    const result = await signIn('credentials', {
-      //...formData,
-      email,
-      password,
-      redirect: false,
-      callbackUrl: '/'
-    
-    });
-
-    if(result?.error){
-      console.log(result)
-      return 
-    }
-
-    setAuthUserOn(true)
-    router.replace("/")
-
-    /*
-    if (result?.url) {
-     return push(result?.url)
-    }
-*/
-    
-
+   
   }
 
 
