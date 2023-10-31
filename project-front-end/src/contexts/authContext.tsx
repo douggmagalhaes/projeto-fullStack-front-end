@@ -176,9 +176,6 @@ export const AuthProvider = ({ children }: Props) => {
     try {
       const {data} = await api.patch(`/users/${userData.id}`, addressEdite)
 
-      //console.log("final do processo", data)
-
-      //toggleModalEditeUser()
       toggleModalUserMenu("edite address close")
 
       Toast({ message: "Endereço editado com sucesso", isSucess: true });
@@ -197,30 +194,7 @@ export const AuthProvider = ({ children }: Props) => {
       const cookiesTest = parseCookies()
       const userId = cookiesTest.Motors_shop_user
 
-      console.log("o id do cookies", userId)
-
-      //const tokenFormate = `${token}`
-
-
-      //const userDecoded: any = jwt_decode(tokenFormate);
-
-      //const tokenFormate = `${token}`
-
-      //console.log(token)
-
-      //const userDecoded: IUser = jwtDecode(tokenFormate);
-
-      //era assim deu erro
-      //const userDecoded: IUser = jwt_decode(token);
-      //jwt_decode
-
-      //console.log(userDecoded)
-
-      //console.log(userDecoded.id)
-
       const {data} = await api.get(`/users/${userId}`)
-
-      //Toast({ message: `Usuário logado ${data.is_seller}`  , isSucess: true });
 
 
       setUserData(data)

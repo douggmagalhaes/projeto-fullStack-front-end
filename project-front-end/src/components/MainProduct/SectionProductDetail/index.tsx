@@ -1,8 +1,8 @@
-//import { AnnouncementProps } from "@/pages/[id]"
+
 import { useAuth } from "@/contexts/authContext";
 import Image from "next/image";
 import Link from "next/link";
-//import CardComments from "../AsideProductDetail/CardComents";
+
 
 import styles from "./styles.module.scss"
 
@@ -11,7 +11,7 @@ const SectionProductDetail = ({announcement}) => {
 
   const {userData} = useAuth()
 
-  //console.log(announcement)
+  
 
   return (
     <section className={styles.section_product_detail}>

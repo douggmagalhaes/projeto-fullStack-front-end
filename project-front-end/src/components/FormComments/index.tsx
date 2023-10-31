@@ -5,9 +5,13 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { parseCookies } from "nookies"
+import { useAuth } from "@/contexts/authContext"
 
-
+const ali = true
 const FormComments =  ({announcement}) => {
+
+const {userData} = useAuth()
+  //disabled={page === 1}
 
   const {register, handleSubmit, reset} = useForm<CreateCommentData>({
     resolver: zodResolver(CreateCommentSchema)
@@ -33,7 +37,13 @@ const FormComments =  ({announcement}) => {
         <textarea id="description" placeholder="Digite uma descrição"
         {...register("comment")}></textarea>
       </div>
-      <button>Comentar</button>
+
+      {
+        userData && (
+          <button disabled={userData == null || undefined}>Comentar</button>
+        )
+      }
+      
 
       </form>
   )
