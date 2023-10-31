@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 //import { FormEventHandler, SyntheticEvent, useState } from "react";
 import { getSession, signIn } from "next-auth/react";
 import { GetServerSideProps } from "next";
+import styles from "./styles.module.scss"
 
 
 const LoginForm = () => {
@@ -60,10 +61,9 @@ const LoginForm = () => {
 
 
   return (
-  <div>
-    <h2>login</h2>
-    <form onSubmit={handleSubmit(onFormSubmit)}>
-      <div>
+  
+    <form onSubmit={handleSubmit(onFormSubmit)} className={styles.form}>
+      <div className={styles.inputs_container}>
         <label htmlFor="email">
           E-mail
         </label>
@@ -74,7 +74,7 @@ const LoginForm = () => {
         
         />
       </div>
-      <div>
+      <div className={styles.inputs_container}>
         <label htmlFor="password">
           senha
         </label>
@@ -84,20 +84,38 @@ const LoginForm = () => {
         {...register("password")}
         />
       </div>
-      <Link href={"/"}>
-      esqueceu sua senha?
-      </Link>
-      <div>
-        <button>
+
+      <div className={styles.link_password_container}>
+        <Link className={styles.link_password} href={"/"}>
+        Esqueceu sua senha?
+        </Link>
+      </div>
+      
+      <div className={styles.button_container}>
+        <button className={styles.button}>
           entrar
         </button>
       </div>
 
+      <div className={styles.link_register}>
+
+        <span>
+           Não é cadastrado ainda? Clique aqui
+        </span>
+    
+      </div>
+
+      <div className={styles.button_container_register}> 
+
       <Link href={"/register"}>
-      Não é cadastrado ainda? Clique aqui
+        <button>Cadastrar</button>
       </Link>
+
+      </div>
+
+     
     </form>
-  </div>
+  
   )
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {

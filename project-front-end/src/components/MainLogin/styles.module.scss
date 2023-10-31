@@ -1,0 +1,39 @@
+.main{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grey-100);
+
+  
+
+  .container_form{
+    width: 412px;
+    height: 542px;
+    border-radius: 4px;
+    padding: 40px;
+    background-color: var(--white-500);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media (max-width: 450px){
+      width: 315px;
+      padding: 40px 16px;
+    
+    }
+
+    .titlte_form{
+
+    }
+
+    .div_form{
+
+
+    }
+
+
+  }
+
+}

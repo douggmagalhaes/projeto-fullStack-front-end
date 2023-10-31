@@ -1,4 +1,5 @@
 //import { NextPage } from "next";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LoginForm from "@/components/LoginForm";
 import MainLogin from "@/components/MainLogin";
@@ -11,6 +12,7 @@ const Login:NextPage = () => {
     <>
     <Header />
     <MainLogin/>
+    <Footer />
     </>
   )
 }
