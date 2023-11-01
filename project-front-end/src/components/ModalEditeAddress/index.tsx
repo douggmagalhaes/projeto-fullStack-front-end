@@ -13,9 +13,21 @@ const ModalEditeAddress = () => {
 
     <div className={styles.div_container_modal}>
       <div className={styles.div_modal}>
-        <h2>Editar endereço</h2>
-        <button type="button" onClick={() => toggleModalUserMenu("edite address close")}>fechar</button>
-      <FormEditeAddress  />
+         <div className={styles.div_title_form}>
+
+            <h2 className={styles.title_form}>Editar perfil</h2>
+            <span className={styles.close_modal} onClick={() => toggleModalUserMenu("edite address close")}>X</span>
+
+          </div>
+
+          <div className={styles.div_form}>
+
+          <span className={styles.div_form_span}>Informações de endereço</span>
+
+             <FormEditeAddress  />
+
+          </div>
+
       </div>
     </div>
 

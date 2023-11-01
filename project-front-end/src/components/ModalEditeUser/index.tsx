@@ -10,9 +10,24 @@ const ModalEditeUser = () => {
   return (
     <div className={styles.div_container_modal}>
       <div className={styles.div_modal}>
-        <h2>user edite</h2>
-        <button type="button" onClick={() => toggleModalUserMenu("edite user close")}>fechar</button>
-      <FormEditeUser />
+
+        <div className={styles.div_title_form}>
+
+          <h2 className={styles.title_form}>Editar perfil</h2>
+          <span className={styles.close_modal} onClick={() => toggleModalUserMenu("edite user close")}>X</span>
+
+        </div>
+
+        <div className={styles.div_form}> 
+
+          <span className={styles.div_form_span}>Informações pessoais</span>
+
+          <FormEditeUser />
+
+        </div>
+        
+        
+      
       </div>
     </div>
   )

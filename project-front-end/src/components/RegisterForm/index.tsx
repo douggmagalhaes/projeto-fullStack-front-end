@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 //import { useAuth } from "@/contexts/authContext";
-import { RegisterSchema, RegisterSchemaData } from "@/schemas/register.Schema";
+import { RegisterSchema, RegisterSchemaData, RegisterSchemaForCreate } from "@/schemas/register.Schema";
 import { useAuth } from "@/contexts/authContext";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss"
@@ -17,8 +17,9 @@ const RegisterForm = () => {
   const [isCheckFalse, setIsCheckFalse] = useState(false)
   const [isCheckTrue, setIsCheckTrue] = useState(true)
 
+  ////RegisterSchemaData, RegisterSchemaForCreate, RegisterSchema
   const {register, handleSubmit, formState: { errors }} = useForm<RegisterSchemaData>({
-    resolver: zodResolver(RegisterSchema)
+    resolver: zodResolver(RegisterSchemaForCreate)
   })
 
   const { registerUser } = useAuth();
@@ -53,9 +54,6 @@ const RegisterForm = () => {
       registerUser({...formData, is_seller: false});
     }
     
-    //registerUser(result);
-   //console.log("useState:",userRegister)
-   //console.log("result:",result)
   };
 
   
@@ -144,8 +142,9 @@ const RegisterForm = () => {
         </label>
         <textarea id="description" placeholder="Digite uma descrição"
         {...register("description")}></textarea>
+         {errors.description && <span>{errors.description.message}</span>}
       </div>
-      {errors.description && <span>{errors.description.message}</span>}
+     
 
       
       <h2>informações de endereço</h2>
@@ -249,10 +248,23 @@ const RegisterForm = () => {
         </label>
         <input 
         type="password" 
-        placeholder="sua senha"
+        placeholder="Digite sua senha"
         {...register("password")}
         />
         {errors.password && <span>{errors.password.message}</span>}
+      </div>
+
+      <div className={styles.inputs_container}>
+        <label htmlFor="confirmPassword">
+          Confirme sua senha
+        </label>
+        <input 
+        id="confirmPassword"
+        type="password" 
+        placeholder="Digite novamente a sua senha"
+        {...register("confirmPassword")}
+        />
+        {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
       </div>
       
       <div className={styles.button_container}>

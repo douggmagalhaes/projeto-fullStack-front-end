@@ -1,0 +1,164 @@
+.form{
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h2{
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1rem;
+    color: var(--grey-800);
+  }
+
+  .inputs_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label{
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1rem;
+      color: var(--grey-800);
+
+    }
+    input{
+      width: 480px;
+      height: 48px;
+      border-radius: 4px;
+      border: 1.5px solid var(--grey-400);
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--grey-500);
+
+      @media (max-width: 550px){
+        max-width: 280px;
+      
+      }
+      @media (max-width: 350px){
+        max-width: 260px;
+      
+      }
+
+
+      
+
+    }
+   
+    input:focus{
+      color: var(--grey-900);
+    }
+
+
+    textarea{
+      width: 480px;
+      height: 80px;
+      border-radius: 4px;
+      border: 1.5px solid var(--grey-400);
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--grey-500);
+
+      @media (max-width: 550px){
+        max-width: 280px;
+      
+      }
+
+      @media (max-width: 350px){
+        max-width: 260px;
+      
+      }
+
+    }
+    
+    textarea:focus{
+      color: var(--grey-900);
+    }
+
+    
+  }
+
+  .div_inputs_container{
+
+    display: flex;
+    gap: 15px;
+
+
+    .inputs_container{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  
+      label{
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 1rem;
+        color: var(--grey-800);
+  
+      }
+      input{
+        width: 232px;
+        height: 48px;
+        border-radius: 4px;
+        border: 1.5px solid var(--grey-400);
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--grey-500);
+  
+        @media (max-width: 550px){
+          width: 133px;
+        
+        }
+  
+        @media (max-width: 350px){
+          width: 122px;
+        
+        }
+  
+      }
+
+      input:focus{
+        color: var(--grey-900);
+      }
+      
+    }
+
+  }
+
+  .buttons_container{
+
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+
+    .button_cancel{
+      width: 150px;
+      height: 48px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background-color: var(--grey-300);
+      color: var(--grey-700);
+    }
+
+
+    .button_save{
+      width: 200px;
+      height: 48px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background-color: var(--blue-800);
+      color: var(--white-500);
+    }
+
+  }
+
+  
+  
+
+}

@@ -7,14 +7,118 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 200;
 
     .div_modal{
-      background-color: var(--color-gray-900);
       padding: 20px;
       box-shadow: 0 0 25px 0 rgba(0,0,0, .25);
       width: 100%;
-      max-width: 250px;
+      max-width: 520px;
       background-color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      border-radius: 4px;
+
+      @media (max-width: 550px){
+        max-width: 320px;
+      
+      }
+
+      @media (max-width: 350px){
+        max-width: 300px;
+      
+      }
+
+      .div_title_form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+
+        .title_form{
+          font-size: 1rem;
+          line-height: 1.3rem;
+          font-weight: 500;
+          color: var(--grey-800);
+
+        }
+
+        .close_modal{
+          font-size: 1.2rem;
+          line-height: 1.3rem;
+          font-weight: 500;
+          color: var(--grey-800);
+          cursor: pointer;
+
+        }
+
+      }
+
+      .div_container_message_delete{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .title_message_delete{
+          font-size: 1rem;
+          line-height: 1.3rem;
+          font-weight: 600;
+          color: var(--grey-900);
+        }
+        .message_delete{
+          font-size: 1rem;
+          line-height: 1.5rem;
+          font-weight: 400;
+          color: var(--grey-700);
+        }
+      }
+
+      .div_container_buttons{
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+
+        .button_cancel{
+
+          width: 126px;
+          height: 48px;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          background-color: var(--grey-300);
+          color: var(--grey-700);
+    
+          @media (max-width: 550px){
+            width: 120px;
+          
+          }
+
+        }
+
+        .button_remove{
+          width: 200px;
+          height: 48px;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          background-color: var(--red-200);
+          color: var(--red-500);
+
+          @media (max-width: 550px){
+            width: 140px;
+          
+          }
+
+        }
+
+      }
+
+      .div_form{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+
+      }
     }
 }

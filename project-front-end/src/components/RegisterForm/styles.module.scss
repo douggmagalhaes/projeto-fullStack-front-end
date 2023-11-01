@@ -33,6 +33,7 @@
       font-weight: 400;
       color: var(--grey-500);
 
+
       @media (max-width: 450px){
         width: 280px;
       
@@ -44,6 +45,12 @@
       }
 
     }
+   
+    input:focus{
+      color: var(--grey-900);
+    }
+
+
     textarea{
       width: 315px;
       height: 80px;
@@ -60,6 +67,12 @@
       }
 
     }
+    
+    textarea:focus{
+      color: var(--grey-900);
+    }
+
+    
   }
 
   .button_container{
@@ -172,6 +185,10 @@
         
         }
   
+      }
+
+      input:focus{
+        color: var(--grey-900);
       }
       
     }

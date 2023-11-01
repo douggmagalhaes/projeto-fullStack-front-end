@@ -39,6 +39,11 @@
       }
 
     }
+
+    input:focus{
+      color: var(--grey-900);
+    }
+    
   }
 
   .link_password_container{

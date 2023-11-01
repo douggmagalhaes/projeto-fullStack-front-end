@@ -2,10 +2,11 @@ import { useAuth } from "@/contexts/authContext"
 import { RegisterEditeSchema, RegisterEditeSchemaData } from "@/schemas/register.Schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import styles from "./styles.module.scss"
 
 const FormEditeUser = () => {
 
-  const {editeUser, userData} = useAuth()
+  const {editeUser, userData, toggleModalUserMenu} = useAuth()
 
   const {register, handleSubmit, formState: { errors }} = useForm<RegisterEditeSchemaData>({
     resolver: zodResolver(RegisterEditeSchema)
@@ -20,9 +21,9 @@ const FormEditeUser = () => {
 
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)}>
+    <form onSubmit={handleSubmit(onFormSubmit)} className={styles.form}>
       
-      <div>
+      <div className={styles.inputs_container}>
         <label htmlFor="name">
           Nome
         </label>
@@ -34,7 +35,8 @@ const FormEditeUser = () => {
         />
         {errors.name && <span>{errors.name.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="email">
           E-mail
         </label>
@@ -46,7 +48,8 @@ const FormEditeUser = () => {
         />
         {errors.email && <span>{errors.email.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="cpf">
           Cpf
         </label>
@@ -58,7 +61,8 @@ const FormEditeUser = () => {
         />
         {errors.cpf && <span>{errors.cpf.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="phone">
           Phone
         </label>
@@ -70,7 +74,8 @@ const FormEditeUser = () => {
         />
         {errors.phone && <span>{errors.phone.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="date">
           Data de nascimento
         </label>
@@ -81,7 +86,8 @@ const FormEditeUser = () => {
        />
         {errors.dateOfBirth && <span>{errors.dateOfBirth.message}</span>}
       </div>
-      <div>
+
+      <div className={styles.inputs_container}>
         <label htmlFor="description">
           Descrição
         </label>
@@ -90,11 +96,11 @@ const FormEditeUser = () => {
       </div>
       {errors.description && <span>{errors.description.message}</span>}
 
-      <div>
+      <div className={styles.buttons_container}>
 
-        <button type="button">Cancelar</button>
-        <button type="button">Excluir Perfil</button>
-        <button>Salvar Alterações</button>
+        <button type="button" className={styles.button_cancel} onClick={() => toggleModalUserMenu("edite user close")}>Cancelar</button>
+        <button type="button" className={styles.button_remove}>Excluir Perfil</button>
+        <button className={styles.button_save}>Salvar Alterações</button>
 
       </div>
 

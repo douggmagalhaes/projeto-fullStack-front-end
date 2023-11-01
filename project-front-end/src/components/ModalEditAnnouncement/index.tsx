@@ -15,15 +15,27 @@ const {toggleModalEdite} = useAnnouncement()
 
   return (
     <div className={styles.div_container_modal}>
+
       <div className={styles.div_modal}>
 
-        <h2>Editar anúncio</h2>
+        <div className={styles.div_title_form}>
 
-        <button type="button" onClick={toggleModalEdite}>fechar</button>
+           <h2 className={styles.title_form}>Editar anúncio</h2>
 
-        <FormEditeAnnouncement /> 
+           <span className={styles.close_modal} onClick={toggleModalEdite}>X</span>
+
+        </div>
+
+
+        <div className={styles.div_form}>
+
+          <span className={styles.div_form_span}>Informações do veículo</span>
+          <FormEditeAnnouncement /> 
+
+        </div>
 
       </div>
+
     </div>
   )
 }

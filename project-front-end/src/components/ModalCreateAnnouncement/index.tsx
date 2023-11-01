@@ -15,8 +15,23 @@ const ModalCreateAnnouncement = () => {
   return (
     <div className={styles.div_container_modal}>
       <div className={styles.div_modal}>
-      <button type="button" onClick={() => setIsOpenModal(false)}>fechar</button>
-        <FormCreateAnnouncement />
+
+        <div className={styles.div_title_form}>
+
+          <h2 className={styles.title_form}>Criar Anúncio</h2>
+          <span className={styles.close_modal} onClick={() => setIsOpenModal(false)}>X</span>
+
+        </div>
+
+        <div className={styles.div_form}>
+
+          <span className={styles.div_form_span}>Informações do veículo</span>
+
+          <FormCreateAnnouncement />
+
+        </div>
+  
+        
       </div>
     </div>
   )
