@@ -4,14 +4,9 @@ import api from "@/services/api";
 import { useRouter } from "next/router";
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
 import Toast from "@/components/toast";
-import { parseCookies, setCookie } from "nookies";
+import { destroyCookie, parseCookies, setCookie } from "nookies";
 import { RegisterEditeSchemaData, RegisterSchemaData } from "@/schemas/register.Schema";
-//import jwt_decode from "jwt-decode";
-
-
-//import { jwtDecode } from "jwt-decode";
 import jwt_decode from 'jwt-decode';
-//import { jwtDecode } from "jwt-decode";
 import { UserSchemaData } from "@/schemas/user.schemas";
 
 
@@ -38,7 +33,6 @@ interface IUser {
   dateOfBirth: string,
   description: string,
   is_seller: boolean,
-  //password: string,
   address: IAddress,
 }
 
@@ -72,10 +66,12 @@ interface AuthProviderData {
   editeAddress: (addressEdite: RegisterEditeSchemaData) => Promise<void>;
   userOn: boolean;
   setUserOn: Dispatch<SetStateAction<boolean>>;
+  isOpenModalUserDelete: boolean;
+  setIsOpenModalUserDelete: Dispatch<SetStateAction<boolean>>
+  deleteUser: () => void;
 
 }
 
-//isOpenModalUserEdite, setIsOpenModalUserEdite, toggleModalEditeUser
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
@@ -83,24 +79,23 @@ export const AuthProvider = ({ children }: Props) => {
   const router = useRouter();
 
   const [userSellerData, setUserSellerData] = useState(null)
-
-  //vou armazenar o usuário logado aqui
+  
   const [userData, setUserData] = useState(null)
 
-  //aqui é pro menu , pra saber se o usuário ta on ou off pra mostrar o menu certo
   const [userOn, setUserOn] = useState(false)
 
   const [isOpenModalUserEdite, setIsOpenModalUserEdite] = useState(false)
 
-  //logica pra abrir e fechar modal
+  const [isOpenModalUserDelete, setIsOpenModalUserDelete] = useState(false)
+  
   const [isOpenModalAddressEdite, setIsOpenModalAddressEdite] = useState(false)
 
   const [isOpenModalUser, setIsOpenModalUser] = useState(false)
 
-  //para editar o user
+  
   const toggleModalEditeUser = () => setIsOpenModalUserEdite(!isOpenModalUserEdite)
 
-  //logica para todos os modals 
+  
   const toggleModalUserMenu = (ctx: string) => {
 
     switch (ctx) {
@@ -138,11 +133,47 @@ export const AuthProvider = ({ children }: Props) => {
   const [authUserOn, setAuthUserOn ] = useState(false)
   const [serachUser, setSearchUser] = useState('')
 
-  //teste do token aqui
+
+  const deleteUser = async () =>{
+
+    const cookies = parseCookies()
+    const token = cookies.Motors_shop_token
+
+    const cookiesUserId = parseCookies()
+    const userId = cookiesUserId.Motors_shop_user
+
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+
+    try {
+
+
+      await api.delete(`/users/${userId}`)
+
+      Toast({ message: "Usuário Deletado com sucesso", isSucess: true });
+
+      destroyCookie(null, "Motors_shop_token")
+
+      destroyCookie(null, "Motors_shop_user")
+    
+      setUserData(null)
+
+      setUserOn(false)
+
+      toggleModalUserMenu("edite user close")
+
+      
+    } catch (error) {
+      Toast({ message: error.response.data.message
+      });
+      
+    }
+  }
+
+  
 
   const editeUser = async (userEdite: RegisterEditeSchemaData) => {
 
-    //console.log("o corpo que chegou", userEdite)
+    
 
     const cookies = parseCookies()
     const token = cookies.Motors_shop_token
@@ -152,16 +183,15 @@ export const AuthProvider = ({ children }: Props) => {
     try {
       const {data} = await api.patch(`/users/${userData.id}`, userEdite)
 
-      //console.log("final do processo", data)
-
-      //toggleModalEditeUser()
+      
       toggleModalUserMenu("edite user close")
 
       Toast({ message: "Usuário editado com sucesso", isSucess: true });
 
       setUserData(data)
     } catch (error) {
-      console.log(error)
+      Toast({ message: error.response.data.message
+      });
     }
 
   }
@@ -182,7 +212,8 @@ export const AuthProvider = ({ children }: Props) => {
 
       setUserData(data)
     } catch (error) {
-      console.log(error)
+      Toast({ message: error.response.data.message
+      });
     }
 
   }
@@ -190,24 +221,25 @@ export const AuthProvider = ({ children }: Props) => {
 
   const loadUser = async () => {
 
+    const cookiesTest = parseCookies()
+    const userId = cookiesTest.Motors_shop_user
+
     try {
-      const cookiesTest = parseCookies()
-      const userId = cookiesTest.Motors_shop_user
+      
 
       const {data} = await api.get(`/users/${userId}`)
 
 
       setUserData(data)
 
-      //console.log(data)
     } catch (error) {
-      console.log(error)
+      //console.log(error)
       
     }
 
   }
   
-  //register
+  
   const registerUser = (registerData: RegisterSchemaData) => {
     api
       .post("/users/address", registerData)
@@ -216,12 +248,13 @@ export const AuthProvider = ({ children }: Props) => {
         router.push("/login");
       })
       .catch((error) => {
-        console.log(error);
-        Toast({ message: "Erro ao criar usuário, tente utilizar outro e-mail" });
+        
+        Toast({ message: error.response.data.message
+        });
       });
   };
 
-  //login
+  
   const login = (loginData: LoginSchemaData) => {
     api
       .post("/login", loginData)
@@ -246,13 +279,13 @@ export const AuthProvider = ({ children }: Props) => {
 
       })
       .catch((error) => {
-        console.log(error);
-        Toast({ message: "Erro ao logar, verifique se o e-mail e senha estão corretos" });
+        Toast({ message: error.response.data.message
+        });
       });
   };
 
-  //register,
-  return <AuthContext.Provider value={{registerUser, login, authUserOn, setAuthUserOn, serachUser, setSearchUser, userSellerData, setUserSellerData, loadUser, userData, setUserData, isOpenModalUserEdite, setIsOpenModalUserEdite, toggleModalEditeUser, editeUser, isOpenModalAddressEdite, setIsOpenModalAddressEdite, toggleModalUserMenu, editeAddress, userOn, setUserOn }}>
+  
+  return <AuthContext.Provider value={{registerUser, login, authUserOn, setAuthUserOn, serachUser, setSearchUser, userSellerData, setUserSellerData, loadUser, userData, setUserData, isOpenModalUserEdite, setIsOpenModalUserEdite, toggleModalEditeUser, editeUser, isOpenModalAddressEdite, setIsOpenModalAddressEdite, toggleModalUserMenu, editeAddress, userOn, setUserOn, isOpenModalUserDelete, setIsOpenModalUserDelete, deleteUser }}>
     {children}
     </AuthContext.Provider>;
 

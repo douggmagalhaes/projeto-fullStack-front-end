@@ -13,21 +13,21 @@ import ModalEditeUser from "@/components/ModalEditeUser";
 import { useAuth } from "@/contexts/authContext";
 import ModalDeleteAnnouncement from "@/components/ModalDeleteAnnouncement";
 import { useRouter } from "next/router";
-import Image from "next/image";
+
 import ModalEditeAddress from "@/components/ModalEditeAddress";
 import Footer from "@/components/Footer";
 import styles from "./styles.module.scss"
 
 export interface AnnouncementsUserPageProps {
   announcements: AnnouncementData[],
-  //comments: CommentSchemaData[]
+ 
 
 }
 
 
 const AnnouncementsUserPage: NextPage<AnnouncementsUserPageProps> = () => {
 
-  //assim eu pego o id da página
+ 
   const router = useRouter()
   const {id} = router.query
 
@@ -35,12 +35,12 @@ const AnnouncementsUserPage: NextPage<AnnouncementsUserPageProps> = () => {
 
   const {isOpenModalUserEdite, isOpenModalAddressEdite} = useAuth()
 
-  //context de anuncio
+  
   const {isOpenModal, isOpenModalEditeAnnouncement, isOpenModalDeleteAnnouncement, readAllAnnouncementForOneUser, setReadAllAnnouncementForOneUser, announcementId, setReadAnnouncemntForId} = useAnnouncement()
 
 
 
-  //apagar
+  
   useEffect(() => {
 
     async function loadAnnouncementsForOneSeller(){
@@ -62,7 +62,7 @@ const AnnouncementsUserPage: NextPage<AnnouncementsUserPageProps> = () => {
 
   },[])
 
-  // eu tava testando o de pegar pro alto complete do form aqui mas pode apagar
+  
   useEffect(() => {
 
     async function loadAnnouncement(){
@@ -113,12 +113,8 @@ const AnnouncementsUserPage: NextPage<AnnouncementsUserPageProps> = () => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const id = ctx.params!.id;
-  //console.log("user id", id)
+ 
   const response = await api.get<AnnouncementData[]>(`/anouncements/user/${id}`)
-
-  //const responseUser = await api.get<AnnouncementData[]>(`/users/${id}`)
-
-  //console.log(response.data)
 
   return {
     props: { announcements: response.data }

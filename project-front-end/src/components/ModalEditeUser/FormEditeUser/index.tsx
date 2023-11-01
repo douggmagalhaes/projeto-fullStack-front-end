@@ -1,12 +1,13 @@
 import { useAuth } from "@/contexts/authContext"
 import { RegisterEditeSchema, RegisterEditeSchemaData } from "@/schemas/register.Schema"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { parseCookies } from "nookies"
 import { useForm } from "react-hook-form"
 import styles from "./styles.module.scss"
 
 const FormEditeUser = () => {
 
-  const {editeUser, userData, toggleModalUserMenu} = useAuth()
+  const {editeUser, userData, toggleModalUserMenu, setIsOpenModalUserEdite, setIsOpenModalUserDelete, deleteUser} = useAuth()
 
   const {register, handleSubmit, formState: { errors }} = useForm<RegisterEditeSchemaData>({
     resolver: zodResolver(RegisterEditeSchema)
@@ -18,6 +19,16 @@ const FormEditeUser = () => {
     editeUser({...formData});
 
   };
+
+  function handleDeleteUser() {
+
+    const cookiesTest = parseCookies()
+    const userId = cookiesTest.Motors_shop_user
+
+    deleteUser()
+
+
+  }
 
 
   return (
@@ -99,7 +110,7 @@ const FormEditeUser = () => {
       <div className={styles.buttons_container}>
 
         <button type="button" className={styles.button_cancel} onClick={() => toggleModalUserMenu("edite user close")}>Cancelar</button>
-        <button type="button" className={styles.button_remove}>Excluir Perfil</button>
+        <button type="button" onClick={handleDeleteUser} className={styles.button_remove}>Excluir Perfil</button>
         <button className={styles.button_save}>Salvar Alterações</button>
 
       </div>
@@ -109,3 +120,7 @@ const FormEditeUser = () => {
 }
 
 export default FormEditeUser
+
+function deleteUser(userId: string) {
+  throw new Error("Function not implemented.")
+}
