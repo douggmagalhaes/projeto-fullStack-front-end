@@ -2,7 +2,7 @@
 
 .card {
   width: 312px;
-  height: 350px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,7 +16,7 @@
 
   
 
-  .div_img {
+  .figure_img {
     width: 312px;
     height: 152;
     background-color: var(--grey-200);
@@ -24,6 +24,7 @@
     justify-content: center;
     align-items: center;
     border: 2px solid var(--grey-200);
+    background-size: contain;
 
     @media (max-width: 699px) {
       width: 100%;

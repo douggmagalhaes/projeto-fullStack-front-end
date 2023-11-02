@@ -100,6 +100,25 @@
     }
   }
 
+  .ul_header_mobile{
+    position: absolute;
+    display: none;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 20px;
+    top: 80px;
+    right: -10px;
+    width: 229px;
+    height: 165px;
+    background-color: var(--white-500);
+
+    @media (max-width: 574px){
+      display: flex;
+    }
+  }
+
 
   
   

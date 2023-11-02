@@ -47,6 +47,19 @@
   .div_btn_hamburguer{
     display: none;
 
+    .btn_hamburguer_close{
+      cursor: pointer;
+      height: 30px;
+      width: 30px;
+     
+    }
+    .btn_hamburguer_open{
+      cursor: pointer;
+      height: 20px;
+      width: 30px;
+
+    }
+
     @media (max-width: 600px){
       display: flex;
     }

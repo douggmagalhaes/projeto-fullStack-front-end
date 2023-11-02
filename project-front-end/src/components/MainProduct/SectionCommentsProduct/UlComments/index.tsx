@@ -36,7 +36,7 @@ const UlComments = ({announcement}: ProductPage) => {
         setAllComments(data)
         
       } catch (error) {
-        console.log(error)
+        
         
       }
     }

@@ -13,7 +13,7 @@ const CardHome = ({announcement}: CardHomeProps) => {
 return (
   <Link href={`/${announcement.id}`}>
     <li className={styles.card}>
-      <div className={styles.div_img}>
+      <figure className={styles.figure_img}>
         <Image 
         width={260}
         height={150}
@@ -21,7 +21,7 @@ return (
         alt="capa anuncio"
         priority={false}
         />
-      </div>
+      </figure>
       <div className={styles.div_details}>
         <p className={styles.name_model}>{announcement.brand} - {announcement.model}</p>
         <p className={styles.description}>{announcement.description.slice(0, 50)} {announcement.description.length >= 50 ? "..." : null}</p>

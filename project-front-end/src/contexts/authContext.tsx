@@ -237,7 +237,7 @@ export const AuthProvider = ({ children }: Props) => {
       setUserData(data)
 
     } catch (error) {
-      //console.log(error)
+      
       
     }
 

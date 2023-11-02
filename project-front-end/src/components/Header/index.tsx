@@ -39,7 +39,7 @@ useEffect(() => {
       
     } catch (error) {
       setUserOn(false)
-      console.log(error)
+      
       
     }
   }

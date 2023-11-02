@@ -19,6 +19,8 @@ const [isOpenHamburguerMenu, setIsOpenHamburguerMenu] = useState(false)
 
 const [isOpenHamburguerMenuMobile, setIsOpenHamburguerMenuMobile] = useState(false)
 
+const [openMenu, setOpenMenu] = useState(false)
+
   const handleMenu = () => {
     if (isOpenHamburguerMenu) {
       setIsOpenHamburguerMenu(false);
@@ -30,8 +32,10 @@ const [isOpenHamburguerMenuMobile, setIsOpenHamburguerMenuMobile] = useState(fal
   const handleMenuMobile = () => {
     if (isOpenHamburguerMenuMobile) {
       setIsOpenHamburguerMenuMobile(false);
+      setOpenMenu(false)
     } else {
       setIsOpenHamburguerMenuMobile(true);
+      setOpenMenu(true)
     }
   }
 
@@ -129,6 +133,43 @@ const [isOpenHamburguerMenuMobile, setIsOpenHamburguerMenuMobile] = useState(fal
         
 
       </div>
+
+      {openMenu? (
+          <ul className={styles.ul_header_mobile}>
+              <li>
+
+              <button type="button" onClick={() => toggleModalUserMenu("edite user open")} className={styles.button}>Editar Perfil</button>
+
+              </li>
+
+              <li>
+
+              <button onClick={() => toggleModalUserMenu("edite address open")} className={styles.button}>Editar endereço</button>
+
+              </li>
+
+              {userData.is_seller == true ? (
+
+              <li>
+
+              <Link href={`AnnouncementsUserPage/${userData.id}`}>
+
+                <button className={styles.button}>Meus Anúncios</button>
+
+              </Link>
+
+              </li>
+
+              ): null}
+
+
+              <li>
+
+              <button className={styles.button} onClick={logout}>Sair</button>
+
+              </li>
+          </ul>
+          ): null}
       
         
       </nav>

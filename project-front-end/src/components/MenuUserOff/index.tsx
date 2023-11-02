@@ -2,6 +2,8 @@ import Link from "next/link"
 import { useState } from "react"
 import Button from "../Button"
 import styles from "./styles.module.scss"
+import { FaAlignJustify } from "react-icons/fa";
+import { MdOutlineClose } from "react-icons/md";
 
 const MenuUserOff = () => {
 
@@ -35,8 +37,8 @@ const MenuUserOff = () => {
         </ul>
         <div className={styles.div_btn_hamburguer}>
           {buttonOpenClose? (
-            <button onClick={() => handleBtnOpenClose()}>close</button>
-          ): <button onClick={() => handleBtnOpenClose()}>open</button>}
+            <MdOutlineClose className={styles.btn_hamburguer_close} onClick={() => handleBtnOpenClose()} />
+          ): <FaAlignJustify className={styles.btn_hamburguer_open} onClick={() => handleBtnOpenClose()} />}
             
           </div>
           {openMenu? (

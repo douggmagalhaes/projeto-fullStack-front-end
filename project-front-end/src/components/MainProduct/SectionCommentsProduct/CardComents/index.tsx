@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
 import styles from "./styles.module.scss"
 
 export interface CardCommentProps {
-  //announcement: AnnouncementData
+ 
   comment: CommentSchemaData
 }
 
@@ -42,9 +42,9 @@ const CardComments = ({comment}: CardCommentProps) => {
     <li className={styles.li_comments}>
 
       <div className={styles.comment_user_detail}>
-
+      
         <span className={styles.user_avatar}>
-          D
+        {comment.user.name.charAt(0)}
         </span>
 
         <span className={styles.user_name}>{comment.user.name}</span>

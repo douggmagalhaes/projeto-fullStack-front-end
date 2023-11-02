@@ -121,7 +121,7 @@ export const AnnouncementProvider = ({children}: Props) =>{
       const {data} = await api.get('/anouncements')
       setAllAnnouncementsData(data)
     } catch (error) {
-      console.log(error)
+      
     }
 
   }
