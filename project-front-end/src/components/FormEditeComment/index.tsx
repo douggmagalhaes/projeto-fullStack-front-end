@@ -5,14 +5,12 @@ import { useForm } from "react-hook-form";
 
 const FormEditeComment = () => {
 
-  //commentIdEdite, setCommentIdEdite, editeComment
   const {commentIdEdite, editeComment} = useComment()
 
   const {register, handleSubmit, formState: { errors }} = useForm<EditeCommentSchemaData>({
     resolver: zodResolver(EditeCommentSchema)
   })
 
-//EditeCommentSchema EditeCommentSchemaData
   const onFormSubmit = (formData: EditeCommentSchemaData) => {
 
     editeComment({...formData}, commentIdEdite);

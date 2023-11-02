@@ -5,20 +5,11 @@ import { AnnouncementData } from "@/schemas/announcement.schamas"
 
 interface UlCardsDetailProps {
   announcements: AnnouncementData[],
-  //comments: CommentSchemaData[]
+ 
 }
 
-//<CardDetailProduct />
-const UlCardsDetail = () => {
 
-   {/*
-    <ul>
-      {readAllAnnouncementForOneUser.map((announcement: AnnouncementData) => {
-        return <CardDetailProduct key={announcement.id} announcement={announcement} />
-      })}
-     
-    </ul>
-     */}
+const UlCardsDetail = () => {
 
   const {readAllAnnouncementForOneUser, setReadAllAnnouncementForOneUser} = useAnnouncement()
 
@@ -26,7 +17,7 @@ const UlCardsDetail = () => {
   return (
 
     <>
-    <div> ala</div>
+    <div> ul</div>
     </>
 
    

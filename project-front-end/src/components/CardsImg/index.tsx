@@ -11,12 +11,6 @@ const CardsImg = ({img}) => {
   const {isOpenModalImgGalery, setIsOpenModalImgGalery, imgData, setImgDate, idImg, setIdmg} = useAnnouncement()
 
 
-  //const [idImg, setIdmg] = useState("")
-
-
-//console.log("aqui", imgData.id)
-
-//console.log(imgData)
 
 function toggleModalImg (idImg){
 

@@ -1,0 +1,98 @@
+.div_container_modal{
+  top: 0;
+    background-color: rgba(0,0,0, .5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .div_modal{
+      padding: 20px;
+      box-shadow: 0 0 25px 0 rgba(0,0,0, .25);
+      width: 100%;
+      max-width: 520px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      border-radius: 4px;
+
+      @media (max-width: 550px){
+        max-width: 320px;
+      
+      }
+
+      @media (max-width: 350px){
+        max-width: 300px;
+      
+      }
+
+      .div_title_form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+
+        .title_form{
+          font-size: 1rem;
+          line-height: 1.3rem;
+          font-weight: 500;
+          color: var(--grey-800);
+
+        }
+
+        .close_modal{
+          font-size: 1.2rem;
+          line-height: 1.3rem;
+          font-weight: 500;
+          color: var(--grey-800);
+          cursor: pointer;
+
+        }
+
+      }
+
+      .div_container_message_success{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .title_message_success{
+          font-size: 1rem;
+          line-height: 1.3rem;
+          font-weight: 600;
+          color: var(--grey-900);
+        }
+        .message_success{
+          font-size: 1rem;
+          line-height: 1.5rem;
+          font-weight: 400;
+          color: var(--grey-700);
+        }
+      }
+
+      .div_container_button{
+
+        .button{
+          width: 132px;
+          height: 38px;
+          border-radius: 4px;
+          background-color: var(--blue-800);
+          color: var(--white-500);
+          font-size: 0.9rem;
+          font-weight: 600;
+
+        }
+      }
+
+      .div_form{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+
+      }
+    }
+}

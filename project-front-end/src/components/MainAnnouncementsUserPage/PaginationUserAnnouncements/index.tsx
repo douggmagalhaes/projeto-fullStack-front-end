@@ -9,8 +9,6 @@ const PaginationUserAnnouncements = (
   totalPages,
 ) => {
 
-  //setpage
-console.log(totalPages.totalPages)
   const { pageNumberPagination, setPageNumberPagination} = useAnnouncement()
 
   const nextPage = (pageNumberPagination: number) =>{

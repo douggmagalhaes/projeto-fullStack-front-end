@@ -1,8 +1,7 @@
-//import { LoginSchema, LoginSchemaData } from "@/schemas/login.schema"
+
 import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
-//import { useAuth } from "@/contexts/authContext";
 import { RegisterSchema, RegisterSchemaData, RegisterSchemaForCreate } from "@/schemas/register.Schema";
 import { useAuth } from "@/contexts/authContext";
 import { useEffect, useState } from "react";
@@ -17,7 +16,6 @@ const RegisterForm = () => {
   const [isCheckFalse, setIsCheckFalse] = useState(false)
   const [isCheckTrue, setIsCheckTrue] = useState(true)
 
-  ////RegisterSchemaData, RegisterSchemaForCreate, RegisterSchema
   const {register, handleSubmit, formState: { errors }} = useForm<RegisterSchemaData>({
     resolver: zodResolver(RegisterSchemaForCreate)
   })

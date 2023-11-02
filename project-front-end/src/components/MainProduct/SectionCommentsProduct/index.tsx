@@ -1,6 +1,5 @@
 import FormComments from "@/components/FormComments"
 import { ProductPage } from "@/pages/[id]"
-//import { AnnouncementProps } from "@/pages/[id]"
 import { CommentSchemaData } from "@/schemas/comment.schemas"
 import api from "@/services/api"
 import { parseCookies } from "nookies"
@@ -11,7 +10,6 @@ import styles from "./styles.module.scss"
 import { useAuth } from "@/contexts/authContext"
 
 export interface CardCommentProps {
-  //announcement: AnnouncementData
   comment: CommentSchemaData
 }
 
@@ -21,7 +19,6 @@ const SectionCommentsProduct = ({announcement}: ProductPage) => {
 
   const {userData} = useAuth()
 
-  //const {allComments, setTakeAnnoucementId} = useComment()
 
   useEffect(() => {
 
@@ -30,7 +27,6 @@ const SectionCommentsProduct = ({announcement}: ProductPage) => {
       const cookies = parseCookies()
       const token = cookies.Motors_shop_token
 
-      //console.log(token)
   
       const config = {
         headers: {
@@ -40,7 +36,7 @@ const SectionCommentsProduct = ({announcement}: ProductPage) => {
       try {
         const {data} = await api.get(`/comments/anouncement/${announcement.id}`)
 
-        //console.log("data dentro do load", data)
+        
         setCommentsData(data)
       } catch (error) {
         console.log(error)
@@ -50,7 +46,7 @@ const SectionCommentsProduct = ({announcement}: ProductPage) => {
     loadComments()
   }, [])
 
-  //console.log("commentData fora do useEffect", commentsData)
+ 
   return (
     <section className={styles.section_Comments}>
 
@@ -62,8 +58,6 @@ const SectionCommentsProduct = ({announcement}: ProductPage) => {
         <div className={styles.div_all_comments}>
            <UlComments announcement={announcement}/>
         </div>
-
-       
 
       </div>
 

@@ -17,7 +17,6 @@
       width: 1370px;
       
       
-  
       @media (max-width: 1401px) {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
@@ -28,35 +27,29 @@
       @media (max-width: 1047px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        //width: 900px;
         margin-left: 100px;
       }
 
       @media (max-width: 902px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        //width: 900px;
         margin-left: 60px;
       }
 
       @media (max-width: 705px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        //width: 900px;
         margin-left: 10px;
       }
 
       @media (max-width: 705px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        //width: 900px;
         margin-left: 10px;
       }
 
       @media (max-width: 658px) {
-        //grid-template-columns: repeat(2, 1fr);
         gap: 30px;
-        //width: 900px;
         display: flex;
         margin-left: 10px;
         overflow-x: scroll;

@@ -9,23 +9,14 @@ export const CommentSchema = z.object({
   comment: z.string(),
   createAt: z.string(),
   user: UserSchema,
-  //anouncement: AnnouncementSchema,
 })
 
 
-
-
-//export const ReadCommentSchema = CommentSchema.extend({anouncement: AnnouncementSchema})
-//CreateCommentSchema
-//CreateCommentData
 export const CreateCommentSchema = CommentSchema.omit({user: true, userId: true, createAt: true, id: true, anouncementId: true})
 
 export const EditeCommentSchema = CreateCommentSchema.partial()
 
-//EditeCommentSchema EditeCommentSchemaData
 export type CommentSchemaData = z.infer<typeof CommentSchema>
-
-//export type ReadCommentSchemaData = z.infer<typeof CommentSchema>
 
 export type CreateCommentData = z.infer<typeof CreateCommentSchema>
 

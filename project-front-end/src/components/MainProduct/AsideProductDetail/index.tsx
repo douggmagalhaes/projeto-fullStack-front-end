@@ -1,25 +1,14 @@
-//import { AnnouncementProps } from "@/pages/[id]"
+
 import CardsImg from "@/components/CardsImg"
 import { useAuth } from "@/contexts/authContext"
 import { ProductPage } from "@/pages/[id]"
 import Link from "next/link"
-//import CardComments from "./CardComents"
-//talvez precise da tipagem aqui
 import styles from "./styles.module.scss"
 
 
 const AsideProductDetail = ({announcement}: ProductPage) =>{
 
-/*
 
- {announcementsData.map((announcement: AnnouncementData) => {
-              return <CardDetailProduct key={announcement.id} announcement={announcement} />
-              })}
-
-*/
-
-  //console.log(announcement.user)
-  //serachUser, setSearchUser
   return (
     <aside className={styles.aside_container}>
 

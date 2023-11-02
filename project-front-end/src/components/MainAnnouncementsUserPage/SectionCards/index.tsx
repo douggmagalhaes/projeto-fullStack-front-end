@@ -19,16 +19,14 @@ const LIMIT = 16
 
 const SectionCards = () => {
 
-  // todos os anuncios estão guardados aqui de maneira global
+  
  const {readAllAnnouncementForOneUser, setReadAllAnnouncementForOneUser, pageNumberPagination, setPageNumberPagination, isOpenModalEditeAnnouncement, isOpenModalDeleteAnnouncement, isOpenModal} = useAnnouncement()
-  //toda lógica pra pegar o id do usuário está aqui
-
-  //console.log(pageNumberPagination)
+  
   const router = useRouter()
   const {id} = router.query
   const IdUser = `${id}`
 
-  //
+  
   const [totalPages, setTotalPages] = useState(0)
   
   
@@ -41,16 +39,14 @@ const SectionCards = () => {
     async function loadAnnouncementsForOneSeller(){
 
       try {
-        // /anouncements/user/pagination/ecba6762-d591-4d89-b029-ba937cef29f7?skip=1&take=3
+        
         const {data} = await api.get(`/anouncements/user/pagination/${IdUser}?skip=${pageNumberPagination}&take=${LIMIT}`)
 
-        //setReadAllAnnouncementForOneUser(data)
-
-        //console.log(data)
+       
 
         setAnnouncementsData(data.anouncements)
         setTotalPages(data.totalPages)
-        //setAllAnnoucements(data)
+       
 
       } catch (error) {
         console.log(error)
@@ -64,10 +60,6 @@ const SectionCards = () => {
   },[pageNumberPagination, isOpenModalEditeAnnouncement, isOpenModalDeleteAnnouncement, isOpenModal, LIMIT])
 
   
-
-  //console.log(readAllAnnouncementForOneUser)
-
-  //totalPages={totalPages} page={page} setpage={setpage}
 
   return (
     <section className={styles.section_cards}>
@@ -105,19 +97,6 @@ const SectionCards = () => {
             <PaginationUserAnnouncements  totalPages={totalPages} />
 
           </div>
-
-
-
-      {/*
-
-      {readAllAnnouncementForOneUser.length <= 0 ? (
-       <h2> não possui anuncios</h2>
-      ):
-      <UlCardsDetail />
-      }
-
-    */}
-      
 
     </section>
   )

@@ -13,14 +13,13 @@ import api from "@/services/api";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 
-import styles from "./styles.module.scss"
 
 export interface ProductPage {
   announcement: AnnouncementData,
-  //comments: CommentSchemaData[]
+
 }
 
-  //console.log("commentData fora do useEffect", commentsData)
+  
 
 
 const Announcement: NextPage<ProductPage> = ({announcement}: ProductPage) => {
@@ -31,10 +30,10 @@ const Announcement: NextPage<ProductPage> = ({announcement}: ProductPage) => {
 
   const {isOpenModalImgGalery, setIsOpenModalImgGalery} = useAnnouncement()
 
-  //isOpenModalEditeComment, setIsOpenModalEditeComment
+  
   const {isOpenModalEditeComment} = useComment()
   
-  //isOpenModalEditeComment, setIsOpenModalEditeComment
+ 
   
   return (
    <>
@@ -68,21 +67,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     props: { announcement: response.data }
   }
 }
-/*
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [{ params: { id: "98e02d62-0e19-4420-b379-b4a5a8758914" } }],
-    //
-    fallback: "blocking"
-  };
-};
 
-//tinha uma tipagem antes mas tava dando erro "<AnnouncementProps>"
-export const getStaticProps: GetStaticProps<AnnouncementProps> = async (ctx) => {
-  const id = ctx.params!.id;
-  const response = await api.get<AnnouncementData>(`/anouncements/${id}`);
-
-  return { props: {announcement : response.data }, revalidate: 60 };
-};
-*/
 export default Announcement

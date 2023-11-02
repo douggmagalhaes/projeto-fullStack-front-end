@@ -4,7 +4,6 @@ import styles from "./styles.module.scss"
 
 const ModalEditeAddress = () => {
 
-  //toggleModalEditeUser
 
   const {toggleModalUserMenu} = useAuth();
 

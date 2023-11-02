@@ -1,5 +1,5 @@
 import {z} from "zod"
-//Image
+
 export const ImageSchema = z.object({
   id: z.string(),
   anouncementId: z.string(),

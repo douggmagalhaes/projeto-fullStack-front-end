@@ -1,10 +1,6 @@
 import { CommentSchemaData, CreateCommentData, EditeCommentSchemaData } from "@/schemas/comment.schemas";
 import api from "@/services/api";
 import { createContext, Dispatch, ReactNode, SetStateAction, use, useContext, useState } from "react";
-//mport nookies from 'nookies'
-//import { parseCookies } from 'nookies';
-//import { getServerSession } from "next-auth";
-//import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Toast from "@/components/toast";
 import { parseCookies } from "nookies";
 
@@ -16,7 +12,7 @@ interface Props {
 interface ReadCommentSchemaData {
   comment: CommentSchemaData[];
 }
-//AuthProviderData
+
 interface CommentProviderData {
   createComment: (createCommentData: CreateCommentData, announcementId: string, token: string) => void;
   allComments: CommentSchemaData[];
@@ -64,13 +60,13 @@ const readCommentsForOneAnnoucement = async (announcementId: string) => {
   };
  
  try {
-  //api.get(`/comments/anouncement/${announcementId}`, config)
+
   const {data} = await api.get(`/comments/anouncement/${announcementId}`, config)
 
   setAllComments(data)
 
  } catch (error) {
-  console.log(error)
+  
  }
   
   
@@ -78,9 +74,6 @@ const readCommentsForOneAnnoucement = async (announcementId: string) => {
   
  const createComment = (createCommentData: CreateCommentData, announcementId: string, token: string) => {
   
-  //console.log("corpo:",createCommentData)
-  //console.log("announcmentId:",announcementId)
-  //console.log("token:",token)
 
   const config = {
     headers: {
@@ -88,7 +81,7 @@ const readCommentsForOneAnnoucement = async (announcementId: string) => {
     }
   };
 
-  //let commentData = {...createCommentData, userId: userId}
+  
 
   api.post(`/comments/${announcementId}`, createCommentData, config)
   .then(async ()  => {
@@ -100,8 +93,8 @@ const readCommentsForOneAnnoucement = async (announcementId: string) => {
 
   })
   .catch((error) => {
-    console.log(error)
-    Toast({ message: "Deu ruim seu comédia" });
+    Toast({ message: error.response.data.message
+    });
   })
   
 
@@ -117,7 +110,7 @@ const readCommentsForOneAnnoucement = async (announcementId: string) => {
     
   }
  }
- ////EditeCommentSchema EditeCommentSchemaData
+ 
  const editeComment = (commentData: EditeCommentSchemaData, commentId: string) =>{
 
   const cookies = parseCookies()
@@ -137,7 +130,8 @@ const readCommentsForOneAnnoucement = async (announcementId: string) => {
 
   } catch (error) {
 
-    console.log(error)
+    Toast({ message: error.response.data.message
+    });
     
   }
  }
@@ -156,6 +150,9 @@ const readCommentsForOneAnnoucement = async (announcementId: string) => {
     loadAllComments()
     
   } catch (error) {
+
+    Toast({ message: error.response.data.message
+    });
     
   }
 

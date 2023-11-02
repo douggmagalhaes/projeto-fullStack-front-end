@@ -9,8 +9,6 @@ import styles from "./styles.module.scss"
 
 interface MainAnnouncementsUserPageProps {
   announcements: AnnouncementData[],
-  //comments: CommentSchemaData[]
-
 }
 
 const MainAnnouncementsUserPage = () => {

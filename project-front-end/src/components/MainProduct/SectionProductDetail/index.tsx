@@ -1,4 +1,3 @@
-
 import { useAuth } from "@/contexts/authContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,8 +9,6 @@ import styles from "./styles.module.scss"
 const SectionProductDetail = ({announcement}) => {
 
   const {userData} = useAuth()
-
-  
 
   return (
     <section className={styles.section_product_detail}>
@@ -66,21 +63,6 @@ const SectionProductDetail = ({announcement}) => {
         </div>
 
       </div>
-
-
-     {/** 
-      <div className={styles.div_comments_product}>
-        <h2>Comentários</h2>
-
-        <ul className={styles.ul_comments_product}>
-          {announcement.comments.map((comment) => {
-            return <CardComments key={comment.id} comment={comment}/>
-          })}
-
-        </ul>
-
-      </div>
-      */}
 
     </section>
   )

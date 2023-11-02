@@ -1,4 +1,4 @@
-//import { HomePage } from "@/pages";
+
 import { AnnouncementData } from "@/schemas/announcement.schamas";
 import Image from "next/image";
 import Link from "next/link";

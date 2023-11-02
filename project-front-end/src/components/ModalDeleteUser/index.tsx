@@ -5,7 +5,6 @@ import styles from "./styles.module.scss"
 
 const ModalDeleteUser = () => {
 
-  //tem que ser o user
   const {announcementId, removeAnnouncements, setIsOpenModalDeleteAnnouncement} = useAnnouncement()
 
   const {isOpenModalUserDelete, setIsOpenModalUserDelete, deleteUser} = useAuth()
@@ -17,7 +16,7 @@ const ModalDeleteUser = () => {
 
     setIsOpenModalDeleteAnnouncement(false)
 
-    deleteUser(userId)
+    
 
 
   }

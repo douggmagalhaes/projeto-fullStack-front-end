@@ -11,7 +11,7 @@ const ali = true
 const FormComments =  ({announcement}) => {
 
 const {userData} = useAuth()
-  //disabled={page === 1}
+  
 
   const {register, handleSubmit, reset} = useForm<CreateCommentData>({
     resolver: zodResolver(CreateCommentSchema)

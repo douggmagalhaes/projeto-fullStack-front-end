@@ -1,4 +1,4 @@
-//import { useAuth } from "@/contexts/authContext"
+
 import { useAnnouncement } from "@/contexts/announcementContext"
 import { useAuth } from "@/contexts/authContext"
 import { useComment } from "@/contexts/commentContext"
@@ -8,25 +8,19 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import styles from "./styles.module.scss"
 
-//{isOpenModal, setIsOpenModal}
+
 const SectionUser = () => {
 
-  //console.log(announcements[0].userId)
+  
 
   const {userSellerData, setUserSellerData} = useAuth()
 
   const {isOpenModal, setIsOpenModal} = useAnnouncement()
 
-  //console.log("fora aqui", userSellerData)
-
-  //const {createComment} = useComment()
-  //const {} = useAuth
-  //const 
-
   const router = useRouter()
   const {id} = router.query
 
-  //console.log("peguei o id",id)
+ 
 
   useEffect(() => {
 
@@ -50,7 +44,7 @@ const SectionUser = () => {
   const toggleModal = () => setIsOpenModal(!isOpenModal)
 
 
-  //userSellerData
+  
   return (
     <section className={styles.section_user_detail}>
       <div>

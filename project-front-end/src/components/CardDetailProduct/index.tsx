@@ -39,12 +39,9 @@ loadAnnouncement()
   
   const toggleModal = () => {
 setIsOpenModalEditeAnnouncement(!isOpenModalEditeAnnouncement)
-
      
   }
   
-//{userData.id === announcement.userId}
-//console.log(announcement.userId)
   return (
     <li className={styles.li_card} onClick={ () => setAnnouncementId(announcement.id) }>
       <figure className={styles.figure_img}>

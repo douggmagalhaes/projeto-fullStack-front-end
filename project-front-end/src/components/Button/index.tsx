@@ -3,14 +3,10 @@ import { ButtonHTMLAttributes, cloneElement, ReactElement, ReactNode } from "rea
 import styles from "./styles.module.scss"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  //qualquer coisa que seja capaz de renderizar atraves do react: strings/ number etc
   children: ReactNode;
-  // é especificamente um elemento do react
   icon?: ReactElement;
   stylesType?: string;
 
-
- 
 }
 
 const Button = ({ children, stylesType, icon}: ButtonProps) => {

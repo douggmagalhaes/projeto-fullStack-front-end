@@ -18,7 +18,7 @@ export const AnnouncementSchema = z.object({
   user: UserSchema,
   image: ImageSchema.array(),
   comments: CommentSchema.array(),
-  //ficou faltando imgO elemento implicitamente tem um tipo 'any' porque a expressão do
+ 
 })
 
 
@@ -29,8 +29,6 @@ export const AnnouncementCreate = AnnouncementSchema.omit({user: true, comments:
 
 export const AnnouncementEdite = AnnouncementCreate.deepPartial()
 
-//AnnouncementEdite
-//AnnouncementEditeData
 export type AnnouncementData = z.infer<typeof AnnouncementSchema>
 
 export type AnnouncementCreateData = z.infer<typeof AnnouncementCreate>

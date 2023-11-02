@@ -13,10 +13,9 @@ import ModalEditeUser from "@/components/ModalEditeUser";
 import { useAuth } from "@/contexts/authContext";
 import ModalDeleteAnnouncement from "@/components/ModalDeleteAnnouncement";
 import { useRouter } from "next/router";
-
 import ModalEditeAddress from "@/components/ModalEditeAddress";
 import Footer from "@/components/Footer";
-import styles from "./styles.module.scss"
+import ModalCreateAnnouncementSuccess from "@/components/ModalCreateAnnouncementSuccess";
 
 export interface AnnouncementsUserPageProps {
   announcements: AnnouncementData[],
@@ -36,7 +35,8 @@ const AnnouncementsUserPage: NextPage<AnnouncementsUserPageProps> = () => {
   const {isOpenModalUserEdite, isOpenModalAddressEdite} = useAuth()
 
   
-  const {isOpenModal, isOpenModalEditeAnnouncement, isOpenModalDeleteAnnouncement, readAllAnnouncementForOneUser, setReadAllAnnouncementForOneUser, announcementId, setReadAnnouncemntForId} = useAnnouncement()
+  
+  const {isOpenModal, isOpenModalEditeAnnouncement, isOpenModalDeleteAnnouncement, readAllAnnouncementForOneUser, setReadAllAnnouncementForOneUser, announcementId, setReadAnnouncemntForId, isOpenModalCreateAnnouncementSuccess} = useAnnouncement()
 
 
 
@@ -46,13 +46,13 @@ const AnnouncementsUserPage: NextPage<AnnouncementsUserPageProps> = () => {
     async function loadAnnouncementsForOneSeller(){
 
       try {
-        // /anouncements/user/pagination/ecba6762-d591-4d89-b029-ba937cef29f7?skip=1&take=3
+        
         const {data} = await api.get(`/anouncements/user/${IdUser}`)
 
         setReadAllAnnouncementForOneUser(data)
 
       } catch (error) {
-        console.log(error)
+       
         
       }
 
@@ -69,9 +69,9 @@ const AnnouncementsUserPage: NextPage<AnnouncementsUserPageProps> = () => {
       try {
         const {data} = await api.get(`/anouncements/${announcementId}`)
 
-        //setReadAnnouncemntForId(data)
+        
       } catch (error) {
-        console.log("deu erro ao carregar o anuncio por id no form edite")
+        
         
       }
 
@@ -89,6 +89,8 @@ const AnnouncementsUserPage: NextPage<AnnouncementsUserPageProps> = () => {
     <>
 
       <Header />
+
+      {isOpenModalCreateAnnouncementSuccess && <ModalCreateAnnouncementSuccess />}
     
       {isOpenModalAddressEdite && <ModalEditeAddress />}
 

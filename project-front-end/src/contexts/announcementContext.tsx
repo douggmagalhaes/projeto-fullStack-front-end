@@ -40,7 +40,6 @@ interface AnnouncementProviderData {
   setIsOpenModalDeleteAnnouncement: Dispatch<SetStateAction<boolean>>;
   idSellerUser: string;
   setIdSellerUser: Dispatch<SetStateAction<string>>;
-  //readAllAnnouncementsForOneSeller: () => Promise<void>
   pageNumberPagination: number;
   setPageNumberPagination: Dispatch<SetStateAction<number>>;
   readOnlyOneAnnouncementForId: () => Promise<void>;
@@ -50,6 +49,8 @@ interface AnnouncementProviderData {
   setImgDate: Dispatch<IImg | null>;
   idImg: string;
   setIdmg: Dispatch<SetStateAction<string>>;
+  isOpenModalCreateAnnouncementSuccess: boolean;
+  setIsOpenModalCreateAnnouncementSuccess: Dispatch<SetStateAction<boolean>>;
 
 }
 
@@ -62,42 +63,44 @@ export const AnnouncementProvider = ({children}: Props) =>{
 
   const [pageNumberPagination, setPageNumberPagination] = useState(1);
 
-  //aqui eu armazeno um id pelo click do anuncio
+ 
   const [announcementId, setAnnouncementId] = useState("")
 
   const [imgData, setImgDate] = useState(null)
 
   const [idSellerUser, setIdSellerUser] = useState("")
 
-  //idImg: string,setIdmg: Dispatch<SetStateAction<string>>
+ 
   const [idImg, setIdmg] = useState("")
 
  const [readAllAnnouncementForOneUser, setReadAllAnnouncementForOneUser] = useState([])
 
- //armazena um anuncio por id
+ 
  const [readAnnouncemntForId, setReadAnnouncemntForId] = useState(null)
 
 
-  //aqui o modal de criar anun
+ 
   const [isOpenModal, setIsOpenModal] = useState(false)
 
-  //modal delete
+ 
   const [isOpenModalDeleteAnnouncement, setIsOpenModalDeleteAnnouncement] = useState(false)
 
+  const [isOpenModalCreateAnnouncementSuccess, setIsOpenModalCreateAnnouncementSuccess] = useState(false)
+
+
   const [isOpenModalImgGalery, setIsOpenModalImgGalery] = useState(false)
-  //não precisarei mais do toggle
+  
   const toggleModal = () => setIsOpenModal(!isOpenModal)
 
-  //modal edite
+  
   const [isOpenModalEditeAnnouncement, setIsOpenModalEditeAnnouncement] = useState(false)
 
   const toggleModalEdite = () =>{
     setIsOpenModalEditeAnnouncement(!isOpenModalEditeAnnouncement)
-    //aqui
-    //setReadAnnouncemntForId(null)
+    
   }
 
-  //está função estou usando para carregar os dados de 1 anuncio ao clicar nele
+  
   const readOnlyOneAnnouncementForId = async () => {
 
     try {
@@ -122,28 +125,13 @@ export const AnnouncementProvider = ({children}: Props) =>{
     }
 
   }
-/*
-  const readAllAnnouncementsForOneSeller = async () => {
-
-    try {
-      const {data} = await api.get(`/anouncements/user/${idSellerUser}`)
-
-      //setReadAllAnnouncementForOneUser(data)
-
-    } catch (error) {
-      console.log(error)
-      
-    }
-  }
-
-  */
 
   const createAnnouncements = async (announcementCreateData: AnnouncementCreateData) => {
 
     const cookies = parseCookies()
     const token = cookies.Motors_shop_token
 
-    //console.log("aqui está o token", token)
+    
 
     const config = {
       headers: {
@@ -156,18 +144,19 @@ export const AnnouncementProvider = ({children}: Props) =>{
     try {
       const {data} = await api.post(`/anouncements/image`, announcementCreateData)
 
-      //toggleModal()
+      
       setIsOpenModal(false)
       readOnlyOneAnnouncementForId()
+      setIsOpenModalCreateAnnouncementSuccess(true)
       Toast({ message: "Anúncio criado com sucesso", isSucess: true });
     } catch (error) {
 
-      console.log("deu ruim", error)
+      Toast({ message: error.response.data.message
+      });
       
     }
   }
 
-  //edita anuncios
   const editeAnnouncements = async (announcementEditeData: RegisterEditeSchemaData, id: string) => {
 
 
@@ -184,7 +173,8 @@ export const AnnouncementProvider = ({children}: Props) =>{
       setIsOpenModalEditeAnnouncement(false)
       
     } catch (error) {
-      console.log("deu erro ao editar o anuncio")
+      Toast({ message: error.response.data.message
+      });
     }
   }
 
@@ -204,14 +194,14 @@ export const AnnouncementProvider = ({children}: Props) =>{
       setIsOpenModalDeleteAnnouncement(false)
     } catch (error) {
 
-      console.log("deu erro ao deletar anuncio", error)
-      
+      Toast({ message: error.response.data.message
+      });
       
     }
 
   }
 
-  return <AnnouncementContext.Provider value={{readAllAnnouncements, allAnnoucementsData, isOpenModal, setIsOpenModal, createAnnouncements, toggleModal, isOpenModalEditeAnnouncement, setIsOpenModalEditeAnnouncement, toggleModalEdite, editeAnnouncements, announcementId, setAnnouncementId, readAllAnnouncementForOneUser, setReadAllAnnouncementForOneUser, readAnnouncemntForId, setReadAnnouncemntForId, removeAnnouncements, isOpenModalDeleteAnnouncement, setIsOpenModalDeleteAnnouncement, setIdSellerUser, idSellerUser, pageNumberPagination, setPageNumberPagination, readOnlyOneAnnouncementForId, isOpenModalImgGalery, setIsOpenModalImgGalery ,imgData, setImgDate , idImg, setIdmg }}>
+  return <AnnouncementContext.Provider value={{readAllAnnouncements, allAnnoucementsData, isOpenModal, setIsOpenModal, createAnnouncements, toggleModal, isOpenModalEditeAnnouncement, setIsOpenModalEditeAnnouncement, toggleModalEdite, editeAnnouncements, announcementId, setAnnouncementId, readAllAnnouncementForOneUser, setReadAllAnnouncementForOneUser, readAnnouncemntForId, setReadAnnouncemntForId, removeAnnouncements, isOpenModalDeleteAnnouncement, setIsOpenModalDeleteAnnouncement, setIdSellerUser, idSellerUser, pageNumberPagination, setPageNumberPagination, readOnlyOneAnnouncementForId, isOpenModalImgGalery, setIsOpenModalImgGalery ,imgData, setImgDate , idImg, setIdmg, isOpenModalCreateAnnouncementSuccess, setIsOpenModalCreateAnnouncementSuccess }}>
     {children}
   </AnnouncementContext.Provider>
 }

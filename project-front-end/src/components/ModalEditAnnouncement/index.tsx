@@ -1,15 +1,9 @@
-//import { AnnouncementEdite, AnnouncementEditeData } from "@/schemas/announcement.schamas";
-//import { zodResolver } from "@hookform/resolvers/zod";
-//import { useFieldArray, useForm } from "react-hook-form";
 import { useAnnouncement } from "@/contexts/announcementContext"
 import FormEditeAnnouncement from "./FormEditeAnnouncement"
 import styles from "./styles.module.scss"
 
 const ModalEditAnnouncement = () => {
-  //AnnouncementEdite
-//AnnouncementEditeData
 
-//removeAnnouncements
 const {toggleModalEdite} = useAnnouncement()
 
 

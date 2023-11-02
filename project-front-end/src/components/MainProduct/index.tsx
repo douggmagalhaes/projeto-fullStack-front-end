@@ -1,6 +1,5 @@
 import { useComment } from "@/contexts/commentContext"
 import { ProductPage } from "@/pages/[id]"
-//import { AnnouncementProps } from "@/pages/[id]"
 import { AnnouncementReturnData } from "@/schemas/announcement.schamas"
 import api from "@/services/api"
 import { parseCookies } from "nookies"
@@ -14,7 +13,7 @@ import styles from "./styles.module.scss"
 
 const MainProduct = ({announcement}: ProductPage) => {
 
- // <SectionCommentsProduct announcement={announcement}  />
+ 
   return (
 
   <main className={styles.main_product}>
@@ -37,18 +36,12 @@ const MainProduct = ({announcement}: ProductPage) => {
 
       <SectionCommentsProduct announcement={announcement}  />
 
-      </div>
-
-     
+      </div> 
         
     </div>
 
      
-
   </main>
-
-   
-    
 
   )
 }

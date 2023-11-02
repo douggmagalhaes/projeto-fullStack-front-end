@@ -1,4 +1,4 @@
-//import Toast from "@/components/Toast";
+
 import { LoginSchemaData } from "@/schemas/login.schema";
 import api from "@/services/api";
 import { useRouter } from "next/router";
@@ -69,6 +69,8 @@ interface AuthProviderData {
   isOpenModalUserDelete: boolean;
   setIsOpenModalUserDelete: Dispatch<SetStateAction<boolean>>
   deleteUser: () => void;
+  isOpenModalCreateUserSuccess: boolean;
+  setIsOpenModalCreateUserSuccess: Dispatch<SetStateAction<boolean>>;
 
 }
 
@@ -91,6 +93,8 @@ export const AuthProvider = ({ children }: Props) => {
   const [isOpenModalAddressEdite, setIsOpenModalAddressEdite] = useState(false)
 
   const [isOpenModalUser, setIsOpenModalUser] = useState(false)
+
+  const [isOpenModalCreateUserSuccess, setIsOpenModalCreateUserSuccess] = useState(false)
 
   
   const toggleModalEditeUser = () => setIsOpenModalUserEdite(!isOpenModalUserEdite)
@@ -244,8 +248,8 @@ export const AuthProvider = ({ children }: Props) => {
     api
       .post("/users/address", registerData)
       .then(() => {
-        Toast({ message: "Usuário cadastrado com sucesso", isSucess: true });
-        router.push("/login");
+        setIsOpenModalCreateUserSuccess(true)
+        
       })
       .catch((error) => {
         
@@ -264,7 +268,6 @@ export const AuthProvider = ({ children }: Props) => {
           maxAge: 60 * 60 * 24 * 3,
           path: "/"
         })
-        console.log("usuário logado", response)
         setCookie(null, "Motors_shop_user", response.data.user.id, {
           maxAge: 60 * 60 * 24 * 3,
           path: "/"
@@ -285,7 +288,7 @@ export const AuthProvider = ({ children }: Props) => {
   };
 
   
-  return <AuthContext.Provider value={{registerUser, login, authUserOn, setAuthUserOn, serachUser, setSearchUser, userSellerData, setUserSellerData, loadUser, userData, setUserData, isOpenModalUserEdite, setIsOpenModalUserEdite, toggleModalEditeUser, editeUser, isOpenModalAddressEdite, setIsOpenModalAddressEdite, toggleModalUserMenu, editeAddress, userOn, setUserOn, isOpenModalUserDelete, setIsOpenModalUserDelete, deleteUser }}>
+  return <AuthContext.Provider value={{registerUser, login, authUserOn, setAuthUserOn, serachUser, setSearchUser, userSellerData, setUserSellerData, loadUser, userData, setUserData, isOpenModalUserEdite, setIsOpenModalUserEdite, toggleModalEditeUser, editeUser, isOpenModalAddressEdite, setIsOpenModalAddressEdite, toggleModalUserMenu, editeAddress, userOn, setUserOn, isOpenModalUserDelete, setIsOpenModalUserDelete, deleteUser, isOpenModalCreateUserSuccess, setIsOpenModalCreateUserSuccess }}>
     {children}
     </AuthContext.Provider>;
 
