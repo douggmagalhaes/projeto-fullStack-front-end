@@ -54,8 +54,23 @@
         margin-left: 10px;
         overflow-x: scroll;
         height: 400px;
+      
       }
     
+    }
+
+    .ul_cards::-webkit-scrollbar {
+      width: 10px;  
+
+    }
+
+    .ul_cards::-webkit-scrollbar-track {
+      background: var(--grey-400);       
+    }
+
+    .ul_cards::-webkit-scrollbar-thumb {
+      background-color: var(--grey-800) ;   
+      border-radius: 10px;       
     }
 
 

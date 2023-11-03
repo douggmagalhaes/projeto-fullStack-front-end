@@ -21,6 +21,8 @@
       overflow-y: scroll;
       height: 800px;
 
+      
+
       @media (max-width: 550px){
         max-width: 320px;
       
@@ -67,5 +69,19 @@
         }
 
       }
+    }
+
+    .div_modal::-webkit-scrollbar {
+      width: 10px;  
+
+    }
+
+    .div_modal::-webkit-scrollbar-track {
+      background: var(--grey-400);       
+    }
+
+    .div_modal::-webkit-scrollbar-thumb {
+      background-color: var(--grey-800) ;   
+      border-radius: 10px;       
     }
 }

@@ -52,6 +52,8 @@ const [openMenu, setOpenMenu] = useState(false)
 
     setUserOn(false)
 
+    setUserData(null)
+
     
     
   }
